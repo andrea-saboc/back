@@ -74,10 +74,9 @@ dependencies {
 
 sonarqube {
 	properties {
-		property "sonar.projectKey", "isa-back"
-		property "sonar.organization", "andrea-saboc"
-		property "sonar.host.url", "https://sonarcloud.io"
-		property "sonar.sourceEncoding", "UTF-8"
+		property "sonar.projectKey", "andrea-saboc_proba-back"
+    	property "sonar.organization", "andrea-saboc"
+    	property "sonar.host.url", "https://sonarcloud.io"
 	}
 }
 
