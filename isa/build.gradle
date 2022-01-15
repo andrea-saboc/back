@@ -1,0 +1,87 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE")
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.4.0'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+	id 'war'
+	id "org.sonarqube" version "3.3"
+
+}
+
+group = 'com.example.isa'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+jar {
+	archiveBaseName.set('app')
+	archiveVersion.set('0.1.0')
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.session:spring-session-core'
+	implementation 'junit:junit:4.12'
+    implementation 'org.jetbrains:annotations:20.1.0'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+
+	// security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.security:spring-security-test'
+
+	// token
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.6.0'
+
+	// jackson
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.12.1'
+
+	// devtools
+	compileOnly("org.springframework.boot:spring-boot-devtools")
+
+	// jpa
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	runtimeOnly 'com.h2database:h2'
+
+	// postgresql
+	implementation 'org.postgresql:postgresql'
+
+	// test
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+	testImplementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+	// mail
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '1.2.0.RELEASE'
+
+}
+
+sonarqube {
+	properties {
+		property "sonar.projectKey", "isa-back"
+		property "sonar.organization", "andrea-saboc"
+		property "sonar.host.url", "https://sonarcloud.io"
+		property "sonar.sourceEncoding", "UTF-8"
+	}
+}
+
+
+
+
+
